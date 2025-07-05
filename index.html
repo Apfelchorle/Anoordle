@@ -42,6 +42,11 @@
           <input type="checkbox" id="toggleGamebuttons" onchange="toggleGameButtons()">
           <span class="slider"></span>
         </label>
+        <p>Toggle Game Keyboard</p>
+        <label class="switch">
+          <input type="checkbox" id="toggleKeyboard" onchange="toggleKeyboard()">
+          <span class="slider"></span>
+        </label>
       </div>
       <!-- ⚙️ Settings Tab -->
       <div id="tab-settings" class="tab">
@@ -115,7 +120,7 @@
   </div>
 
   <!-- 🔊 Sounds -->
-  <audio id="successSound" src="success.m4a" preload="auto"></audio>
+  <audio id="successSound" src="success.mp3" preload="auto"></audio>
   <audio id="errorSound" src="error.mp3" preload="auto"></audio>
 
   <!-- 📜 Footer -->
@@ -128,5 +133,46 @@
 
   <!-- 🚀 Main Script -->
   <script src="script.js"></script>
+
+  <!-- Keyboard StyleSheet -->
+
+  <script src="keyboard.js"></script>
+  <link rel="stylesheet" href="keyboard.css">
+<div id="keyboardContainer">
+ <div class="keyboard-row">
+  <div class="keyboard-key">Q</div>
+   <div class="keyboard-key">W</div>
+    <div class="keyboard-key">E</div>
+     <div class="keyboard-key">R</div>
+      <div class="keyboard-key">T</div>
+       <div class="keyboard-key">Y</div>
+        <div class="keyboard-key">U</div>
+         <div class="keyboard-key">I</div>
+          <div class="keyboard-key">O</div>
+           <div class="keyboard-key">P</div>
+ </div>
+ <div class="keyboard-row">
+  <div class="keyboard-key">A</div>
+   <div class="keyboard-key">S</div>
+    <div class="keyboard-key">D</div>
+     <div class="keyboard-key">F</div>
+      <div class="keyboard-key">G</div>
+       <div class="keyboard-key">H</div>
+        <div class="keyboard-key">J</div>
+         <div class="keyboard-key">K</div>
+          <div class="keyboard-key">L</div>
+ </div>
+ <div class="keyboard-row">
+  <div class="keyboard-key">ENTER</div>
+   <div class="keyboard-key">Z</div>
+    <div class="keyboard-key">X</div>
+     <div class="keyboard-key">C</div>
+      <div class="keyboard-key">V</div>
+       <div class="keyboard-key">B</div>
+        <div class="keyboard-key">N</div>
+         <div class="keyboard-key">M</div>
+          <div class="keyboard-key"><img src="imgs/backspace.png" class="backspace"></div>
+ </div>
+</div>
 </body>
 </html>

@@ -138,6 +138,7 @@ async function submitGuess() {
 
   guesses.push(guess);
   createGrid();
+  updateKeyboardColors()
 
   if (guess === target) {
     playSound("successSound");
@@ -174,6 +175,7 @@ function createGrid() {
       }, i * 100);
 
       grid.appendChild(cell);
+      updateKeyboardColors()
     });
   });
 }
@@ -190,6 +192,7 @@ function hint() {
 
 // 🔁 Restart game
 async function restartGame() {
+  resetKeyboardColors()
   const btn = document.querySelector('button[onclick="restartGame()"]');
   btn.disabled = true;
   const previous = target;
@@ -359,6 +362,51 @@ function updateMenuLanguage(lang) {
   document.getElementById("TotalGuesses").textContent = t.TotalGuesses;
 
 }
+
+function updateKeyboardColors() {
+  const allKeys = document.querySelectorAll(".keyboard-key");
+
+  guesses.forEach(guess => {
+    guess.split("").forEach((char, i) => {
+      const key = [...allKeys].find(k => k.textContent.trim().toUpperCase() === char.toUpperCase());
+      if (!key) return;
+
+      if (char === target[i]) {
+        key.classList.remove("key-present", "key-absent");
+        key.classList.add("key-correct");
+      } else if (target.includes(char)) {
+        if (!key.classList.contains("key-correct")) {
+          key.classList.remove("key-absent");
+          key.classList.add("key-present");
+        }
+      } else {
+        if (!key.classList.contains("key-correct") && !key.classList.contains("key-present")) {
+          key.classList.add("key-absent");
+        }
+      }
+    });
+  });
+}
+
+function resetKeyboardColors() {
+  const keys = document.querySelectorAll(".keyboard-key");
+  keys.forEach(key => {
+    key.classList.remove("key-correct", "key-present", "key-absent");
+  });
+}
+
+
+function toggleKeyboard() {
+  const checkbox = document.getElementById("toggleKeyboard");
+  const container = document.getElementById("keyboardContainer");
+
+  if (checkbox && container) {
+    container.style.display = checkbox.checked ? "none" : "flex";
+  }
+}
+
+
+
 
 
 
