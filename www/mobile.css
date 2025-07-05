@@ -1,0 +1,21 @@
+body {
+  font-size: 18px;
+  padding: 16px;
+}
+
+.cell, .letter {
+  width: 92px;
+  height: 92px;
+  font-size: 42px;
+}
+
+button {
+  font-size: 32px;
+  padding: 21px;
+  width: 100%;
+  max-width: 280px;
+}
+
+#popupBox {
+  padding: 42px;
+}
