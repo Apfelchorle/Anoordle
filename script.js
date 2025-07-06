@@ -144,6 +144,9 @@ async function submitGuess() {
     playSound("successSound");
     handleWinCondition();
     showMessage("🎉 You got it!", "success");
+    document.body.scrollIntoView({
+    behavior: 'smooth'
+    });
     document.getElementById("winOverlay").style.display = "flex";
     document.getElementById("guessCount").textContent = guesses.length;
     document.getElementById("languageDisplay").textContent = getLanguageLabel(currentApiLanguage);
