@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Anoordle</title>
   <link rel="icon" type="image/x-icon" href="imgs/icon.png">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" id="styleMain">
   <link rel="stylesheet" href="mobile-keyboard.css">
+  <!-- 🎨 Custom themes -->
+  <link rel="stylesheet" href="themes/style-void.css" id="styleVoid" disabled>
+  <link rel="stylesheet" href="themes/keyboard-void.css" id="keyboardVoid" disabled>
+
 </head>
 <body class="light">
 
@@ -36,6 +40,11 @@
         <p>Toggle Hard Mode:</p>
         <label class="switch">
           <input type="checkbox" id="toggleDarkMenu" onchange="toggleDarkMode()">
+          <span class="slider"></span>
+        </label>
+        <p>🌀 Delve Into Livi's Madness</p>
+        <label class="switch">
+          <input type="checkbox" onchange="ToggleLiviMadness()">
           <span class="slider"></span>
         </label>
         <p>Toggle Game Buttons</p>
@@ -138,13 +147,14 @@
   <!-- 📚 Static Word Dictionary -->
   <script src="words_ar.js"></script>
 
+
   <!-- 🚀 Main Script -->
   <script src="script.js"></script>
 
   <!-- Keyboard StyleSheet -->
 
   <script src="keyboard.js"></script>
-  <link rel="stylesheet" href="keyboard.css">
+  <link rel="stylesheet" href="keyboard.css" id="keyboardMain">
 <div id="keyboardContainer">
  <div class="keyboard-row">
   <div class="keyboard-key">Q</div>

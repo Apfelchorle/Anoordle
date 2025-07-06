@@ -451,6 +451,32 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+let liviMadnessActive = false;
+
+function ToggleLiviMadness() {
+  liviMadnessActive = !liviMadnessActive;
+
+  const styleMain = document.getElementById("styleMain");
+  const keyboardMain = document.getElementById("keyboardMain");
+  const styleVoid = document.getElementById("styleVoid");
+  const keyboardVoid = document.getElementById("keyboardVoid");
+
+  if (liviMadnessActive) {
+    styleMain.disabled = true;
+    keyboardMain.disabled = true;
+    styleVoid.disabled = false;
+    keyboardVoid.disabled = false;
+    showMessage("🧠 Livi's Madness Has Taken Over!", "info");
+  } else {
+    styleMain.disabled = false;
+    keyboardMain.disabled = false;
+    styleVoid.disabled = true;
+    keyboardVoid.disabled = true;
+    showMessage("ThatOneLivi Has left the game.", "info");
+  }
+}
+
+
 
 
 
