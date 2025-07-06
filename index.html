@@ -6,6 +6,7 @@
   <title>Anoordle</title>
   <link rel="icon" type="image/x-icon" href="imgs/icon.png">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="mobile-keyboard.css">
 </head>
 <body class="light">
 
@@ -31,7 +32,7 @@
         <button onclick="hint()">Hint</button>
         <button onclick="killMenu()">Kill The Menu</button>
       </div>
-      <!-- 🎨 Themes Tab -->
+      <!-- 🎨 Features -->
       <div id="tab-themes" class="tab">
         <p>Toggle Hard Mode:</p>
         <label class="switch">
@@ -46,6 +47,11 @@
         <p>Toggle Game Keyboard</p>
         <label class="switch">
           <input type="checkbox" id="toggleKeyboard" onchange="toggleKeyboard()">
+          <span class="slider"></span>
+        </label>
+        <p>Toggle Game Music</p>
+        <label class="switch">
+          <input type="checkbox" id="toggleGameMusic" onchange="toggleGameMusic()">
           <span class="slider"></span>
         </label>
       </div>
@@ -121,9 +127,9 @@
   </div>
 
   <!-- 🔊 Sounds -->
-  <audio id="successSound" src="success.mp3" preload="auto"></audio>
-  <audio id="errorSound" src="error.mp3" preload="auto"></audio>
-  <audio id="id" src="music.mp3" preload="auto"></audio>
+  <audio id="successSound" src="sounds/success.mp3" preload="auto"></audio>
+  <audio id="errorSound" src="sounds/error.mp3" preload="auto"></audio>
+  <audio id="music" src="sounds/music.mp3" preload="auto"></audio>
 
   <!-- 📜 Footer -->
 <notes id="footerNotes">
@@ -175,6 +181,8 @@
          <div class="keyboard-key">M</div>
           <div class="keyboard-key"><img src="imgs/backspace.png" class="backspace"></div>
  </div>
+<!-- 📱 Mobile Keyboard Wrapper -->
+<div id="mobileKeyboardWrapper" style="display: none;"></div>
 </div>
 </body>
 </html>

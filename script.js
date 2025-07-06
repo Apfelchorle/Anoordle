@@ -2,6 +2,13 @@ let target = "";
 let guesses = [];
 let hintUsed = false;
 let currentApiLanguage = "en";
+const gameMusic = new Audio("sounds/music.mp3");
+gameMusic.loop = true;
+let musicEnabled = false;
+
+
+
+
 
 // 🌐 Change language + layout direction
 function updateApiLanguage(lang) {
@@ -69,6 +76,7 @@ function playSound(id) {
   if (sound) sound.play();
 }
 
+  
 // 🌗 Toggle theme
 function toggleDarkMode() {
   document.body.classList.toggle("dark");
@@ -409,7 +417,39 @@ function toggleKeyboard() {
 }
 
 
+function toggleGameMusic() {
+  const musicSwitch = document.getElementById("toggleGameMusic");
 
+  if (musicSwitch.checked) {
+    gameMusic.play();
+    musicEnabled = true;
+  } else {
+    gameMusic.pause();
+    gameMusic.currentTime = 0; // Optional: reset to start
+    musicEnabled = false;
+  }
+}
+
+function isMobileDevice() {
+  return window.innerWidth <= 480 || /Mobi|Android/i.test(navigator.userAgent);
+}
+
+function loadMobileKeyboard() {
+  fetch("mobile-keyboard.html")
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById("mobileKeyboardWrapper").innerHTML = html;
+      document.getElementById("mobileKeyboardWrapper").style.display = "block";
+    });
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  if (isMobileDevice()) {
+    loadMobileKeyboard();
+    const desktopKeyboard = document.getElementById("keyboardContainer");
+    if (desktopKeyboard) desktopKeyboard.style.display = "none";
+  }
+});
 
 
 
