@@ -1,0 +1,400 @@
+/* 🌐 Roboto SemiBold Font Setup */
+@font-face {
+  font-family: 'Roboto SemiBold';
+  src: url('fonts/Roboto-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('fonts/Cairo-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body.light, body.dark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Roboto SemiBold', 'Cairo', 'Amiri', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+body.light {
+  background-color: rgb(27 27 27);
+  color: #5b5b5b;
+}
+
+body.dark .cell,
+body.dark .letter,
+body.dark #popupBox,
+body.dark #menuPanel {
+  background-color: #121212;
+  border-color: #2f2f2f;
+  color: #2f2f2f;
+}
+
+body.light #messageBox,
+body.light #menuButton {
+  background-color: #292929;
+  color: #5b5b5b;
+}
+
+/* RTL Support */
+body[dir="rtl"] #grid,
+body[dir="rtl"] #letterInputs {
+  direction: rtl;
+}
+
+body[dir="rtl"] .cell,                                  
+body[dir="rtl"] .letter,
+body[dir="rtl"] button {
+  unicode-bidi : bidi-override !important;
+  text-align: right;
+  text-align: center;
+}
+
+/* Message Box */
+#messageBox {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 6px;
+  background-color: #000000;
+  z-index: 10000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.3s ease;
+}
+
+.message-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.message-fadeout {
+  animation: fadeAway 3s forwards;
+}
+
+@keyframes fadeAway {
+  0% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-30px); }
+}
+
+/* Grid Container */
+#grid {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 20px;
+}
+
+/* Tiles and Inputs */
+.cell, .letter {
+  width: 52px;
+  height: 52px;
+  border: 2px solid #3f3f3f;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  line-height: 52px;
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #2a2a2a;
+  transition: background-color 0.3s ease;
+}
+
+.letter {
+  margin: 4px;
+  font-size: 26px;
+  color: #636363;
+}
+
+/* Tile Feedback */
+.correct {
+  background-color: #646464;
+  color: #9f9f9f;
+}
+
+.present {
+  background-color: #474747;
+  color: #777777;
+}
+
+.absent {
+  background-color: #2f2f2f;
+  color: #434343;
+}
+
+/* Buttons */
+button {
+  font-size: 18px;
+  padding: 8px 14px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #656565;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.animate {
+  animation: bounce 0.3s ease;
+}
+
+/* Responsive Grid */
+@media (max-width: 500px) {
+  .cell, .letter {
+    width: 42px;
+    height: 42px;
+    font-size: 19px;
+  }
+  button {
+    font-size: 16px;
+    padding: 6px 10px;
+  }
+}
+
+/* Popup Overlay */
+#popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeInOverlay 0.5s ease forwards;
+}
+
+#popupBox {
+  background: #7b7b7b;
+  color: #333;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 25px rgb(63 63 63 / 20%);
+  animation: popupSlide 0.6s ease forwards;
+}
+
+#popupBox button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #6b6b6b;
+  border: none;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#popupBox button:hover {
+  background-color: #555;
+}
+
+/* Toggle Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #a4a4a4;
+  border-radius: 30px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: background-color 0.4s ease;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 22px;
+  height: 22px;
+  background-color: #5a5a5a;
+  border-radius: 50%;
+  transition: transform 0.4s ease;
+}
+
+.switch input:checked + .slider {
+  background-color: #333;
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(30px);
+}
+
+/* Popup Animations */
+@keyframes popupSlide {
+  from { transform: translateY(-40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Menu Button */
+#menuButton {
+  position: fixed;
+  top: 10px;
+  right: 15px;
+  background-color: #333;
+  color: #3c3c3c;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10001;
+}
+
+/* Slide-In Menu */
+#menuPanel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 100%;
+  background-color: #3c3c3c;
+  opacity: 86%;
+  color: #959595;
+  box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+  transform: translateX(100%);
+  transition: transform 0.4s ease;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+body.menu-open #menuPanel {
+  transform: translateX(0);
+}
+
+/* Tabs */
+#menuTabs {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+#menuTabs button {
+  background-color: #333;
+  border: solid;
+  padding: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 15%;
+}
+
+#menuTabs button:hover {
+  background-color: #666;
+}
+
+/* Tab Content */
+.tab {
+  display: none;
+}
+
+.tab.active {
+  display: block;
+}
+
+/* Menu Header */
+#menuHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#menuHeader button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Game Buttons */
+#GameButtons {
+  display: block;
+}
+
+.confetti {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background-color: red;
+  animation: confetti-fall 3s linear forwards;
+  z-index: 10000;
+  top: 0;
+  left: 50%;
+  opacity: 0.9;
+}
+
+.win-popup {
+  animation: popupSlide 0.6s ease forwards;
+  box-shadow: 0 0 25px rgba(255,255,255,0.2);
+  background: #616161;
+  color: #333;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+}
+
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(600px) rotate(720deg);
+    opacity: 0;
+  }
+}
+

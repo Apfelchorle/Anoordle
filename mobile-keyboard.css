@@ -1,0 +1,84 @@
+/* Mobile Keyboard */
+#mobileKeyboardContainer {
+  background-color: #222;
+  border: 2px solid #333;
+  border-radius: 12px;
+  padding: 12px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+}
+
+/*  Row (grid-based) */
+.keyboard-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(36px, 1fr));
+  gap: 6px;
+  width: 100%;
+}
+
+/* Style */
+.keyboard-key {
+  font-size: 16px;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Interactions */
+.keyboard-key:hover {
+  background-color: #555;
+  transform: scale(1.05);
+}
+
+.keyboard-key:active {
+  background-color: #666;
+  transform: scale(0.95);
+}
+
+/* ⌫ Backspace Image */
+.backspace {
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+}
+
+/* Game Feedback Colors */
+.key-correct {
+  background-color: green;
+  color: white;
+}
+
+.key-present {
+  background-color: goldenrod;
+  color: white;
+}
+
+.key-absent {
+  background-color: #444;
+  color: #aaa;
+}
+
+/* Mobile Font */
+@media screen and (max-width: 400px) {
+  .keyboard-key {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  #mobileKeyboardContainer {
+    padding: 8px;
+  }
+}
