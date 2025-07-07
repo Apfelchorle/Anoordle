@@ -111,10 +111,10 @@ const Keytranslations = {
 
 function updateKeyboardLanguage(lang) {
   const t = Keytranslations[lang] || Keytranslations.en;
-  document.getElementById("Q").textContent = t.Q;
-  document.getElementById("W").textContent = t.W;
-  document.getElementById("E").textContent = t.E;
-  document.getElementById("R").textContent = t.R;
+  document.getElementById("Q").innerText = t.Q;
+  document.getElementById("W").innerText = t.W;
+  document.getElementById("E").innerText = t.E;
+  document.getElementById("R").innerText = t.R;
   document.getElementById("T").textContent = t.T;
   document.getElementById("Y").textContent = t.Y;
   document.getElementById("U").textContent = t.U;
@@ -139,4 +139,18 @@ function updateKeyboardLanguage(lang) {
   document.getElementById("M").textContent = t.M;
   document.getElementById("ENTER").textContent = t.ENTER;
 
+}
+
+let currentLang = "en"; // default or pull from localStorage
+
+function toggleKeyboardLanguage() {
+  currentLang = currentLang === "en" ? "ar" : "en";
+  updateKeyboardLanguage(currentLang);
+
+  // Flip layout direction if desired
+  const container = document.getElementById("keyboardContainer");
+  container.setAttribute("dir", currentLang === "ar" ? "rtl" : "ltr");
+
+  // Optional: Save preference
+  localStorage.setItem("gameLang", currentLang);
 }
