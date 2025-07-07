@@ -15,6 +15,7 @@ function updateApiLanguage(lang) {
   currentApiLanguage = lang;
   document.body.dir = lang === "ar" ? "rtl" : "ltr";
   updateMenuLanguage(lang); // ✨ Localize UI
+  updateKeyboardLanguage(lang);
   showMessage(`🌐 Language set to ${getLanguageLabel(lang)}`, "info");
   restartGame();
 }
