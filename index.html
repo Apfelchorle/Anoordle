@@ -31,9 +31,9 @@
       <!-- 🏠 Home Tab -->
       <div id="tab-home" class="tab active">
         <p>Use Restart if you're stuck, Hint if you're gay</p>
-        <button onclick="restartGame()">Restart Game</button>
-        <button onclick="hint()">Hint</button>
-        <button onclick="killMenu()">Kill The Menu</button>
+        <button onclick="restartGame()" id="restart">Restart Game</button>
+        <button onclick="hint()" id="hint">Hint</button>
+        <button onclick="killMenu()" id="killmenu">Kill The Menu</button>
       </div>
       <!-- 🎨 Features -->
       <div id="tab-themes" class="tab">
@@ -90,7 +90,7 @@
         <li>⬜ Gray = incorrect</li>
         <li>use the hint button (if ur a dumbass)</li>
         <li>simple rules no bullshit words.</li>
-        <li>Star The Github repo</li>
+        <li>Star The GitHub repo</li>
       </ul>
       <div style="margin-top:20px;">
         <h6><strong>- Made With Notepad  By Anes</strong></h6>
@@ -105,7 +105,7 @@
     <h2 id="winMessage">🎉 You Won!</h2>
     <p id="winDescription">Great job guessing the word!</p>
     <ul style="text-align:left;">
-      <li>✅ You guessed all the letters correctly</li>
+      <li>✅ You guessed all the letters correctly<span id="winText"></span></li>
       <li>📜 Total guesses: <span id="guessCount"></span></li>
       <li>🌐 Language: <span id="languageDisplay"></span></li>
       <li>😈 You Gonna Stop now like a litte bitch?<span id="mockMessage"></span></li>
@@ -129,9 +129,9 @@
 
   <!-- 🕹️ Controls -->
   <div id="GameButtons">
-    <button onclick="submitGuess()">Submit</button>
-    <button onclick="restartGame()">Restart</button>
-    <button onclick="hint()">Hint</button>
+    <button onclick="submitGuess()" id="submit">Submit</button>
+    <button onclick="restartGame()" id="restart">Restart</button>
+    <button onclick="hint()" id="hint">Hint</button>
   </div>
 
   <!-- 🔊 Sounds -->
@@ -190,7 +190,9 @@
          <div class="keyboard-key" id="M">M</div>
           <div class="keyboard-key"><img src="imgs/backspace.png" class="backspace"></div>
  </div>
-<!-- 📱 Mobile Keyboard Wrapper -->
+    <button id="langToggleBtn" onclick="toggleKeyboardLanguage()" title="Switch Language">🌐</button>
+
+    <!-- 📱 Mobile Keyboard Wrapper -->
 <div id="mobileKeyboardWrapper" style="display: none;"></div>
 </div>
 </body>
